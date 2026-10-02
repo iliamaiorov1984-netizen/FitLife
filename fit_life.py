@@ -6,16 +6,18 @@ def is_correct(user_data, word):
     try:
         res = float(user_data) if word in ('вес', 'рост') else int(user_data)
         if res < 0:
-            print(f'Ошибка ввода!\n{word.title()} '
+            word_title = word.title()
+            print(f'Ошибка ввода!\n{word_title} '
                   f'должен быть положительным числом. Попробуйте снова.\n')
             return is_correct(input(f'Укажите свой {word}: '), word)
         return res
     except ValueError:
+        word_title = word.title()
         if word == 'возраст':
-            print(f'Ошибка ввода!\n{word.title()} '
+            print(f'Ошибка ввода!\n{word_title} '
                   f'должен быть целым числом. Попробуйте снова.\n')
         else:
-            print(f'Ошибка ввода!\n{word.title()} '
+            print(f'Ошибка ввода!\n{word_title} '
                   f'должен быть целым или дробным числом с точкой '
                   f'в качестве разделителя. Попробуйте снова.\n')
         return is_correct(input(f'Укажите свой {word}: '), word)
