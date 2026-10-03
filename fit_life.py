@@ -1,5 +1,14 @@
 # Проект FitLife - MVP версия 1.0
 
+def get_age_ending(age):
+    """Функция для определения правильного склонения возраста"""
+    if age in range(1, 122, 10) and age not in (11, 111):
+        return ' год'
+    elif str(age)[-1] in ('234') and age not in range(12, 15) and age < 110:
+        return ' года'
+    else:
+        return ' лет'
+
 
 def is_correct(user_data, word):
     """Функция для проверки корректности ввода"""
@@ -35,6 +44,7 @@ user_name = input('Давайте знакомиться. '
 print(f'Очень приятно, {user_name}!\n')
 
 user_age = is_correct(input('Укажите свой возраст: '), 'возраст')
+user_age = str(user_age) + get_age_ending(user_age)
 user_weight = is_correct(input('Укажите свой вес в килограммах: '), 'вес')
 user_height = is_correct(input('Укажите свой рост в метрах: '), 'рост')
 
@@ -49,4 +59,4 @@ water_l = (user_weight * 30) / 1000
 print(f'\n\nОтчет для пользователя {user_name}. '
       f'Возраст {user_age}\nиндекс массы тела равен - {bmi}\n'
       f'рекомендуемая суточная норма потребления воды '
-      f'- {water_l} л.\n\nРасчёт окончен. Будьте здоровы!')
+      f'- {water_l} л\n\nРасчёт окончен. Будьте здоровы!')
